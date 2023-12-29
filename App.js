@@ -1,18 +1,44 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import CategoriesScreen from "./screens/CategoriesScreen.js";
-import { NavigationContainer } from "@react-navigation/native"
+import { NavigationContainer } from "@react-navigation/native";
+
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import MealsOverviewScreen from "./screens/mealsOverviewScreen";
+
+const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
       <>
-        <StatusBar style={"light"}/>
+        <StatusBar style={"dark"}/>
           <NavigationContainer>
-              <CategoriesScreen />
+              <Stack.Navigator
+                  // ReactNav docs > Navigators > Native Stack > Options
+                  screenOptions={{
+                      headerStyle: { backgroundColor: "#0099cc"},
+                      headerTintColor: "white",
+                      contentStyle: {backgroundColor:  "#cccccc" }
+                  }}
+              >
+                  <Stack.Screen
+                      name="MealsCategories"
+                      component={CategoriesScreen}
+                      options={{
+                          // ReactNav docs > Navigators > Native Stack > Options
+                          title: "All Categories"
+                      }}
+                  />
+                  <Stack.Screen
+                      name="MealsOverview"
+                      component={MealsOverviewScreen}
+                      //route and nav are auto passed in by react nav
+                      options={({route, navigation})=>{}}
+                  />
+              </Stack.Navigator>
           </NavigationContainer>
-ccvv
       </>
-
   );
 }
 
