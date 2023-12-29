@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
       <>
-        <StatusBar style={"dark"}/>
+        <StatusBar style={"light"}/>
           <NavigationContainer>
               <Stack.Navigator
                   // ReactNav docs > Navigators > Native Stack > Options
@@ -33,8 +33,14 @@ export default function App() {
                   <Stack.Screen
                       name="MealsOverview"
                       component={MealsOverviewScreen}
-                      //route and nav are auto passed in by react nav
-                      options={({route, navigation})=>{}}
+                      //--route and nav are auto passed in by react nav--//
+                      // options={({route, navigation})=>{
+                      //     const catId = route.params.categoryId;
+                      //     return {
+                      //         title: catId,
+                      //     };
+                      // }}
+
                   />
               </Stack.Navigator>
           </NavigationContainer>
